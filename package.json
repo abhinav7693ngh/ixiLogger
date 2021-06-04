@@ -1,8 +1,9 @@
 {
   "name": "ixilogger",
-  "version": "0.0.3",
-  "description": "Simple to use logger utility",
+  "version": "0.0.4",
+  "description": "Simple to use logger utility for Javascript and Typescript projects",
   "main": "index.js",
+  "keywords": ["Javascript","JS", "logging", "logger", "log", "Typescript", "TS"],
   "author": "Abhinav Singh",
   "license": "MIT"
 }
