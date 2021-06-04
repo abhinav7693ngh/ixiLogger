@@ -89,7 +89,7 @@ const logger = new ixilogger({
     data: "fatal log",
   });
   ```
-  > **There is some extra default information added with logs as per log type are** <br/>
+  > **There are some extra default information added with logs as per log type are** <br/>
   >
   > 1. **name** - Which is the name of the app given or default if not given <br/>
   > 2. **logType** which can have below values<br/>
