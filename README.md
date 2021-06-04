@@ -106,3 +106,4 @@ const logger = new ixiLogger({
       - 40 for warn <br/>
       - 50 for error <br/>
       - 60 for fatal <br/>
+  > 4. **@timestamp** which store the log time
