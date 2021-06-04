@@ -99,20 +99,20 @@ const logger = new ixilogger({
   > 1. **name** - Which is the name of the app given or default if not given <br/>
   > 2. **logType** which can have below values<br/>
 
-      - trace <br/>
-      - debug <br/>
-      - info <br/>
-      - warn <br/>
-      - error <br/>
-      - fatal <br/>
+      - trace
+      - debug
+      - info
+      - warn
+      - error
+      - fatal
 
   > 3. **level** which can have below values as per logType<br/>
 
-      - 10 for trace <br/>
-      - 20 for debug <br/>
-      - 30 for log <br/>
-      - 40 for warn <br/>
-      - 50 for error <br/>
-      - 60 for fatal <br/>
+      - 10 (trace)
+      - 20 (debug)
+      - 30 (info)
+      - 40 (warn)
+      - 50 (error)
+      - 60 (fatal)
 
   > 4. **@timestamp** which store the log time
