@@ -84,26 +84,34 @@ const logger = new ixilogger({
   });
   ```
 - **Fatal log**
+
   ```javascript
   logger.fatal({
     data: "fatal log",
   });
   ```
+
+  > **Important thing to note - Currently you can only give objects to log in all the available logger methods**
+
   > **There are some extra default information added with logs as per log type are** <br/>
   >
   > 1. **name** - Which is the name of the app given or default if not given <br/>
   > 2. **logType** which can have below values<br/>
+
       - trace <br/>
       - debug <br/>
       - info <br/>
       - warn <br/>
       - error <br/>
       - fatal <br/>
+
   > 3. **level** which can have below values as per logType<br/>
+
       - 10 for trace <br/>
       - 20 for debug <br/>
       - 30 for log <br/>
       - 40 for warn <br/>
       - 50 for error <br/>
       - 60 for fatal <br/>
+
   > 4. **@timestamp** which store the log time

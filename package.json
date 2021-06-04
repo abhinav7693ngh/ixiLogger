@@ -1,6 +1,6 @@
 {
   "name": "ixilogger",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Simple to use logger utility for Javascript, Typescript and Node projects",
   "main": "index.js",
   "keywords": ["Javascript","JS", "logging", "logger", "log", "Typescript", "TS"],
