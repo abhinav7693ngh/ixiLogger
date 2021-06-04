@@ -34,7 +34,7 @@ import { ixilogger } from "ixilogger";
 
 ## How to use
 
-ixilogger just import a class called **ixilogger**. You can create a logger instance which takes a config object as parameter which has 2 fields i.e. **name** which is usually the application name and **filepath** which is the log file path. For eg :-
+ixilogger exports a class called **ixilogger**. You can import and create a logger instance which takes a config object as parameter which has 2 fields i.e. **name** which is usually the application name and **filepath** which is the log file path. For eg :-
 
 ```javascript
 const path = require("path");
