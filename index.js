@@ -49,10 +49,8 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logData);
             } else {
-                throw new Error('ixiLogger: data need to be logged can only be an object');
+                throw new Error('ixiLogger: Info data need to be logged can only be an object');
             }
-        } else {
-            throw new Error('ixiLogger: data need to be logged cannot be null');
         }
     }
 
@@ -67,10 +65,72 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logError);
             } else {
-                throw new Error('ixiLogger: error need to be logged can only be an object');
+                throw new Error('ixiLogger: Error data need to be logged can only be an object');
             }
-        } else {
-            throw new Error('ixiLogger: error need to be logged cannot be null');
+        }
+    }
+
+    debug(dataToLog) {
+        if (dataToLog !== null) {
+            if (typeof dataToLog === 'object') {
+                const logDebug = Object.assign({}, {
+                    name: this.#instanceName,
+                    level: 20,
+                    logType: 'debug',
+                    '@timestamp': new Date().toISOString()
+                }, dataToLog);
+                this.#writeToFile(logDebug);
+            } else {
+                throw new Error('ixiLogger: Debug data need to be logged can only be an object');
+            }
+        }
+    }
+
+    warn(dataToLog) {
+        if (dataToLog !== null) {
+            if (typeof dataToLog === 'object') {
+                const logWarn = Object.assign({}, {
+                    name: this.#instanceName,
+                    level: 40,
+                    logType: 'warn',
+                    '@timestamp': new Date().toISOString()
+                }, dataToLog);
+                this.#writeToFile(logWarn);
+            } else {
+                throw new Error('ixiLogger: Warn data need to be logged can only be an object');
+            }
+        }
+    }
+
+    fatal(dataToLog) {
+        if (dataToLog !== null) {
+            if (typeof dataToLog === 'object') {
+                const logFatal = Object.assign({}, {
+                    name: this.#instanceName,
+                    level: 60,
+                    logType: 'fatal',
+                    '@timestamp': new Date().toISOString()
+                }, dataToLog);
+                this.#writeToFile(logFatal);
+            } else {
+                throw new Error('ixiLogger: Fatal data need to be logged can only be an object');
+            }
+        }
+    }
+
+    trace(dataToLog) {
+        if (dataToLog !== null) {
+            if (typeof dataToLog === 'object') {
+                const logFatal = Object.assign({}, {
+                    name: this.#instanceName,
+                    level: 10,
+                    logType: 'trace',
+                    '@timestamp': new Date().toISOString()
+                }, dataToLog);
+                this.#writeToFile(logFatal);
+            } else {
+                throw new Error('ixiLogger: Trace data need to be logged can only be an object');
+            }
         }
     }
 }
