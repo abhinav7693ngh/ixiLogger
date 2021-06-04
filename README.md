@@ -56,13 +56,13 @@ const logger = new ixilogger({
 - **Trace log**
   ```javascript
   logger.trace({
-    data: "info log",
+    data: "trace log",
   });
   ```
 - **Debug log**
   ```javascript
   logger.debug({
-    data: "info log",
+    data: "debug log",
   });
   ```
 - **Info log**
@@ -74,19 +74,19 @@ const logger = new ixilogger({
 - **Error log**
   ```javascript
   logger.error({
-    data: "info log",
+    data: "error log",
   });
   ```
 - **Warn log**
   ```javascript
   logger.warn({
-    data: "info log",
+    data: "warn log",
   });
   ```
 - **Fatal log**
   ```javascript
   logger.fatal({
-    data: "info log",
+    data: "fatal log",
   });
   ```
   > **There is some extra default information added with logs as per log type are** <br/>
