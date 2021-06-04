@@ -2,16 +2,16 @@
 
 ## Installation
 
-You can install ixiLogger using below commands.
+You can install ixilogger using below commands.
 
 ```
-npm install --save ixiLogger
+npm install --save ixilogger
 ```
 
 or
 
 ```javascript
-yarn add ixiLogger
+yarn add ixilogger
 ```
 
 ---
@@ -21,25 +21,25 @@ yarn add ixiLogger
 If you are using require syntax then you can import using below code.
 
 ```javascript
-const { ixiLogger } = require("ixiLogger");
+const { ixilogger } = require("ixilogger");
 ```
 
 If you are using modern import syntax then you can import using below code.
 
 ```javascript
-import { ixiLogger } from "ixiLogger";
+import { ixilogger } from "ixilogger";
 ```
 
 ---
 
 ## How to use
 
-ixiLogger just import a class called **ixiLogger**. You can create a logger instance which takes a config object as parameter which has 2 fields i.e. **name** which is usually the application name and **filepath** which is the log file path. For eg :-
+ixilogger just import a class called **ixilogger**. You can create a logger instance which takes a config object as parameter which has 2 fields i.e. **name** which is usually the application name and **filepath** which is the log file path. For eg :-
 
 ```javascript
 const path = require("path");
 
-const logger = new ixiLogger({
+const logger = new ixilogger({
   name: "app", // Name of the application
   filepath: path.resolve("/var/log/app/", "app.log"), // Log path
 });
@@ -51,7 +51,7 @@ const logger = new ixiLogger({
 
 > **Default parameter values** <br/> name --- ixiLogger <br/> filepath --- /var/log/ixiLogger.log
 
-### Methods Available on ixiLogger instance
+### Methods Available on ixilogger instance
 
 - **Trace log**
   ```javascript

@@ -129,5 +129,5 @@ class ixiLogger {
 }
 
 module.exports = {
-    ixiLogger
+    ixilogger: ixiLogger
 }
