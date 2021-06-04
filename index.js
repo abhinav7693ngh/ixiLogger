@@ -20,7 +20,7 @@ class ixilogger {
             this.#instanceFilepath = path.resolve("/var/log/", "ixilogger.log");
             this.#instanceName = 'ixilogger';
         }
-        if (!fs.existsSync(`${this.#instanceFilepath}/${this.#instanceName}`)) {
+        if (!fs.existsSync(`${this.#instanceFilepath}`)) {
             const createStream = fs.createWriteStream(`${this.#instanceFilepath}`);
             createStream.end();
         }
