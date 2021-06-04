@@ -9,15 +9,15 @@ class ixiLogger {
     constructor(config) {
         if (config) {
             if (typeof config === 'object') {
-                const { filepath = '/var/log/ixiLogger.log', name = 'ixiLogger' } = config;
+                const { filepath = '/var/log/ixiLogger.log', name = 'ixilogger' } = config;
                 this.#instanceFilepath = filepath;
                 this.#instanceName = name;
             } else {
-                throw new Error('ixiLogger: Not able to initialize logger as config given is not an object');
+                throw new Error('ixilogger: Not able to initialize logger as config given is not an object');
             }
         } else {
             this.#instanceFilepath = '/var/log/ixiLogger.log';
-            this.#instanceName = 'ixiLogger';
+            this.#instanceName = 'ixilogger';
         }
         if (!fs.existsSync(`${this.#instanceFilepath}/${this.#instanceName}`)) {
             const createStream = fs.createWriteStream(`${this.#instanceFilepath}`);
@@ -42,7 +42,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logtrace);
             } else {
-                throw new Error('ixiLogger: Trace data need to be logged can only be an object');
+                throw new Error('ixilogger: Trace data need to be logged can only be an object');
             }
         }
     }
@@ -58,7 +58,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logDebug);
             } else {
-                throw new Error('ixiLogger: Debug data need to be logged can only be an object');
+                throw new Error('ixilogger: Debug data need to be logged can only be an object');
             }
         }
     }
@@ -74,7 +74,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logData);
             } else {
-                throw new Error('ixiLogger: Info data need to be logged can only be an object');
+                throw new Error('ixilogger: Info data need to be logged can only be an object');
             }
         }
     }
@@ -90,7 +90,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logWarn);
             } else {
-                throw new Error('ixiLogger: Warn data need to be logged can only be an object');
+                throw new Error('ixilogger: Warn data need to be logged can only be an object');
             }
         }
     }
@@ -106,7 +106,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logError);
             } else {
-                throw new Error('ixiLogger: Error data need to be logged can only be an object');
+                throw new Error('ixilogger: Error data need to be logged can only be an object');
             }
         }
     }
@@ -122,7 +122,7 @@ class ixiLogger {
                 }, dataToLog);
                 this.#writeToFile(logFatal);
             } else {
-                throw new Error('ixiLogger: Fatal data need to be logged can only be an object');
+                throw new Error('ixilogger: Fatal data need to be logged can only be an object');
             }
         }
     }
