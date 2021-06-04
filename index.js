@@ -2,29 +2,22 @@ const fs = require('fs');
 
 class ixiLogger {
 
-    #filepath = '/var/log/ixiLogger.log'; // default filepath
-
-    #name = 'ixiLogger'; // default appname
-
     #instanceFilepath;
 
     #instanceName;
 
     constructor(config) {
         if (config) {
-            if (config.filepath) {
-                this.#instanceFilepath = config.filepath;
+            if (typeof config === 'object') {
+                const { filepath = '/var/log/ixiLogger.log', name = 'ixiLogger' } = config;
+                this.#instanceFilepath = filepath;
+                this.#instanceName = name;
             } else {
-                this.#instanceFilepath = this.#filepath;
-            }
-            if (config.name) {
-                this.#instanceName = config.name;
-            } else {
-                this.#instanceName = this.#name;
+                throw new Error('ixiLogger: Not able to initialize logger as config given is not an object');
             }
         } else {
-            this.#instanceFilepath = this.#filepath;
-            this.#instanceName = this.#name;
+            this.#instanceFilepath = '/var/log/ixiLogger.log';
+            this.#instanceName = 'ixiLogger';
         }
         if (!fs.existsSync(`${this.#instanceFilepath}/${this.#instanceName}`)) {
             const createStream = fs.createWriteStream(`${this.#instanceFilepath}`);
