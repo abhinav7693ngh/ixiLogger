@@ -38,6 +38,7 @@ ixilogger just import a class called **ixilogger**. You can create a logger inst
 
 ```javascript
 const path = require("path");
+const { ixilogger } = require("ixilogger");
 
 const logger = new ixilogger({
   name: "app", // Name of the application

@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class ixiLogger {
+class ixilogger {
 
     #instanceFilepath;
 
@@ -9,14 +9,14 @@ class ixiLogger {
     constructor(config) {
         if (config) {
             if (typeof config === 'object') {
-                const { filepath = '/var/log/ixiLogger.log', name = 'ixilogger' } = config;
+                const { filepath = '/var/log/ixilogger.log', name = 'ixilogger' } = config;
                 this.#instanceFilepath = filepath;
                 this.#instanceName = name;
             } else {
                 throw new Error('ixilogger: Not able to initialize logger as config given is not an object');
             }
         } else {
-            this.#instanceFilepath = '/var/log/ixiLogger.log';
+            this.#instanceFilepath = '/var/log/ixilogger.log';
             this.#instanceName = 'ixilogger';
         }
         if (!fs.existsSync(`${this.#instanceFilepath}/${this.#instanceName}`)) {
@@ -129,5 +129,5 @@ class ixiLogger {
 }
 
 module.exports = {
-    ixilogger: ixiLogger
+    ixilogger
 }
