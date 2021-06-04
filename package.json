@@ -1,8 +1,8 @@
 {
   "name": "ixilogger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple to use logger utility",
   "main": "index.js",
   "author": "Abhinav Singh",
-  "license": "ISC"
+  "license": "MIT"
 }
