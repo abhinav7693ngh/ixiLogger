@@ -47,8 +47,6 @@ const logger = new ixiLogger({
 
 > log file path usually comes from the app config but you can also hardcode if you wanted.
 
-> **_Keep in mind - All values are accepted apart from Undefined/null._**
-
 > config object is not mandatory and also the fields are also purely optional. So if you don't want to give any config then it uses the default "name" and "filepath".
 
 > **Default parameter values** <br/> name --- ixiLogger <br/> filepath --- /var/log/ixiLogger.log
