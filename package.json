@@ -1,0 +1,8 @@
+{
+  "name": "ixilogger",
+  "version": "0.0.1",
+  "description": "Simple to use logger utility",
+  "main": "index.js",
+  "author": "Abhinav Singh",
+  "license": "ISC"
+}
