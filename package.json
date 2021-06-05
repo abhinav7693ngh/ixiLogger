@@ -1,8 +1,12 @@
 {
   "name": "ixilogger",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Simple to use logger utility for Javascript, Typescript and Node projects",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinav7693ngh/ixiLogger"
+  },
   "keywords": ["Javascript","JS", "logging", "logger", "log", "Typescript", "TS"],
   "author": "Abhinav Singh",
   "license": "MIT"
