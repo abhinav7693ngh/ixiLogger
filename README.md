@@ -2,7 +2,8 @@
 
 ## Introduction
 
-ixilogger is a simple to use utility that help you setup logging superfast in your Javascript and Node projects.
+ixilogger is a simple to use utility that help you setup logging superfast in your Javascript and Node projects.<br/>
+Don't forget to leave a github star ⭐, if you like ixilogger.
 
 ## Installation
 
