@@ -41,8 +41,8 @@ const path = require("path");
 const { ixilogger } = require("ixilogger");
 
 const logger = new ixilogger({
-  name: "app", // Name of the application
-  filepath: path.resolve("/var/log/app/", "app.log"), // Log path
+  name: "app", // Name of the application (Optional)
+  filepath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional)
 });
 ```
 
