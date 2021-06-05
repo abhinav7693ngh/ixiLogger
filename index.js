@@ -33,7 +33,7 @@ class ixilogger {
     }
 
     trace(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logtrace = Object.assign({}, {
                     name: this.#instanceName,
@@ -49,7 +49,7 @@ class ixilogger {
     }
 
     debug(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logDebug = Object.assign({}, {
                     name: this.#instanceName,
@@ -65,7 +65,7 @@ class ixilogger {
     }
 
     info(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logData = Object.assign({}, {
                     name: this.#instanceName,
@@ -81,7 +81,7 @@ class ixilogger {
     }
 
     warn(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logWarn = Object.assign({}, {
                     name: this.#instanceName,
@@ -97,7 +97,7 @@ class ixilogger {
     }
 
     error(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logError = Object.assign({}, {
                     name: this.#instanceName,
@@ -113,7 +113,7 @@ class ixilogger {
     }
 
     fatal(dataToLog) {
-        if (dataToLog !== null) {
+        if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logFatal = Object.assign({}, {
                     name: this.#instanceName,
