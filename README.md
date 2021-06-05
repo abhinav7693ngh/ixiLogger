@@ -1,5 +1,9 @@
 # ixiLogger 🏳️‍🌈
 
+## Introduction
+
+ixilogger is a simple to use utility that help you setup logging superfast in your Javascript and Node projects.
+
 ## Installation
 
 You can install ixilogger using below commands.
@@ -92,7 +96,7 @@ const logger = new ixilogger({
   });
   ```
 
-  > **Important thing to note - Currently you can only give objects to log in all the available logger methods**
+  > **Important thing to note - Currently ixilogger only support for objects to log in all the available logger methods**
 
   > **There are some extra default information added with logs as per log type are** <br/>
   >
