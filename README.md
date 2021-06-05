@@ -1,4 +1,4 @@
-# ixiLogger 🏳️‍🌈
+# ixiLogger 🪵
 
 ## Introduction
 
