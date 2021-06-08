@@ -47,7 +47,7 @@ class ixilogger {
                 throw new Error('ixilogger: Not able to initialize logger as config given is not an object');
             }
         }
-        if (!fs.existsSync(`${this.#fullFilePath}`)) { // Create a new file if not existing
+        if (!fs.existsSync(`${this.#filePath}`)) { // Create a new file if not existing
             const createStream = fs.createWriteStream(`${this.#filePath}`);
             createStream.end();
         }
