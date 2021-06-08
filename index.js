@@ -19,7 +19,7 @@ class ixilogger {
             if (typeof config === 'object') {
                 const {
                     appName = this.#appName,
-                    filePath = this.#filepath,
+                    filePath = this.#filePath,
                     showLogs = this.#showLogs,
                     pollingInterval = this.#pollingInterval
                 } = config;
