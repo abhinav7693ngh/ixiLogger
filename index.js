@@ -85,7 +85,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logTrace = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 10,
                     logType: 'trace',
                     '@timestamp': new Date().toISOString()
@@ -104,7 +104,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logDebug = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 20,
                     logType: 'debug',
                     '@timestamp': new Date().toISOString()
@@ -123,7 +123,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logInfo = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 30,
                     logType: 'info',
                     '@timestamp': new Date().toISOString()
@@ -142,7 +142,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logWarn = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 40,
                     logType: 'warn',
                     '@timestamp': new Date().toISOString()
@@ -161,7 +161,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logError = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 50,
                     logType: 'error',
                     '@timestamp': new Date().toISOString()
@@ -180,7 +180,7 @@ class ixilogger {
         if (dataToLog !== null && dataToLog !== undefined) {
             if (typeof dataToLog === 'object') {
                 const logFatal = Object.assign({}, {
-                    name: this.#instanceName,
+                    name: this.#appName,
                     level: 60,
                     logType: 'fatal',
                     '@timestamp': new Date().toISOString()
