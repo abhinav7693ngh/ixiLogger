@@ -47,7 +47,9 @@ const { ixilogger } = require("ixilogger");
 
 const logger = new ixilogger({
   name: "app", // Name of the application (Optional)
-  filepath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional)
+  filepath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional),
+  showLogs: false, // set to true if you want to console logs (Optional)
+  pollingInterval: 1000, // As logs are polled and written to file in batches, Using this you can set the polling interval in ms (Optional)
 });
 ```
 
@@ -55,7 +57,7 @@ const logger = new ixilogger({
 
 > config object is not mandatory and also the fields are also purely optional. So if you don't want to give any config then it uses the default "name" and "filepath".
 
-> **Default parameter values** <br/> name --- ixilogger <br/> filepath --- /var/log/ixilogger.log
+> **Default parameter values** <br/> **name** - ixilogger <br/> **filepath** - /var/log/ixilogger.log <br/> **showLogs** - false <br/> **pollingInterval** - 1000ms
 
 ### Methods Available on ixilogger instance
 
