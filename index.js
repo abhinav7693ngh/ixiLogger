@@ -91,7 +91,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Trace] ${logTrace}`);
+                    console.log(`[Trace] ${JSON.stringify(logTrace)}`);
                 }
                 this.#logQueue.push(logTrace);
             } else {
@@ -110,7 +110,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Debug] ${logDebug}`);
+                    console.log(`[Debug] ${JSON.stringify(logDebug)}`);
                 }
                 this.#logQueue.push(logDebug);
             } else {
@@ -129,7 +129,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Info] ${logInfo}`);
+                    console.log(`[Info] ${JSON.stringify(logInfo)}`);
                 }
                 this.#logQueue.push(logInfo);
             } else {
@@ -148,7 +148,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Warn] ${logWarn}`);
+                    console.log(`[Warn] ${JSON.stringify(logWarn)}`);
                 }
                 this.#logQueue.push(logWarn);
             } else {
@@ -167,7 +167,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Error] ${logError}`);
+                    console.log(`[Error] ${JSON.stringify(logError)}`);
                 }
                 this.#logQueue.push(logError);
             } else {
@@ -186,7 +186,7 @@ class ixilogger {
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
                 if (this.#showLogs) {
-                    console.log(`[Fatal] ${logFatal}`);
+                    console.log(`[Fatal] ${JSON.stringify(logFatal)}`);
                 }
                 this.#logQueue.push(logFatal);
             } else {
