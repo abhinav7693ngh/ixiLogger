@@ -8,7 +8,7 @@ class ixilogger {
 
     #showLogs = false;
 
-    #pollingInterval = 1000;
+    #pollingInterval = 100;
 
     #setIntervalAdd = null;
 
