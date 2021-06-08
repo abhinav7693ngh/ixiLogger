@@ -45,8 +45,8 @@ const path = require("path");
 const { ixilogger } = require("ixilogger");
 
 const logger = new ixilogger({
-  name: "app", // Name of the application (Optional)
-  filepath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional),
+  appName: "app", // Name of the application (Optional)
+  filePath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional),
   showLogs: false, // set to true if you want to console logs (Optional)
   pollingInterval: 1000, // As logs are polled and written to file in batches, Using this you can set the polling interval in ms (Optional)
 });
