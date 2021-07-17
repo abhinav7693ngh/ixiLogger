@@ -1,6 +1,6 @@
 {
   "name": "ixilogger",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Simple to use logger utility for Nodejs Servers",
   "main": "index.js",
   "repository": {
