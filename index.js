@@ -1,18 +1,16 @@
-const fs = require('fs');
+const { createWriteStream, existsSync } = require('fs');
+const { Readable } = require('stream');
 const path = require('path');
+
 class ixilogger {
 
     #appName = 'ixilogger';
 
     #filePath = path.resolve('/var/log/', 'ixilogger.log');
 
-    #showLogs = false;
+    #readableStream = new Readable({ read() {} });
 
-    #pollingInterval = 100;
-
-    #setIntervalAdd = null;
-
-    #logQueue = [];
+    #writableStream;
 
     constructor(config) {
         if (config) {
@@ -20,65 +18,35 @@ class ixilogger {
                 const {
                     appName = this.#appName,
                     filePath = this.#filePath,
-                    showLogs = this.#showLogs,
-                    pollingInterval = this.#pollingInterval
                 } = config;
-                if (typeof pollingInterval === 'number') {
-                    this.#pollingInterval = pollingInterval;
+                if (typeof appName === 'string') {
+                    this.#appName = appName;
                 } else {
-                    throw new Error('ixilogger: pollingInterval should be a number');
+                    throw new Error('ixilogger: appName should be a string');
                 }
                 if (typeof filePath === 'string') {
                     this.#filePath = filePath;
                 } else {
                     throw new Error('ixilogger: filePath should be a string');
                 }
-                if (typeof appName === 'string') {
-                    this.#appName = appName;
-                } else {
-                    throw new Error('ixilogger: appName should be a string');
-                }
-                if (typeof showLogs === 'boolean') {
-                    this.#showLogs = showLogs;
-                } else {
-                    throw new Error('ixilogger: showLogs should be boolean');
-                }
             } else {
                 throw new Error('ixilogger: Not able to initialize logger as config given is not an object');
             }
         }
-        if (!fs.existsSync(`${this.#filePath}`)) { // Create a new file if not existing
-            const createStream = fs.createWriteStream(`${this.#filePath}`);
-            createStream.end();
+        this.#createWritable();
+        this.#connectStreams();
+    }
+
+    #createWritable() {
+        if (!existsSync(`${this.#filePath}`)) { // Create a new file if not existing
+            this.#writableStream = createWriteStream(`${this.#filePath}`, { flags: 'a' });
+        } else {
+            this.#writableStream = createWriteStream(`${this.#filePath}`, { flags: 'a' });
         }
-        this.#startPollingForLogs();
-        process.on('beforeExit', () => {
-            if (this.#logQueue.length > 0) {
-                this.#writeToFile();
-            }
-            clearInterval(this.#setIntervalAdd);
-        });
     }
 
-    #writingToFile(data) { // data will always be JSON stringified
-        const writeStream = fs.createWriteStream(`${this.#filePath}`, { flags: 'a' });
-        writeStream.write(data);
-        writeStream.end();
-    }
-
-    #writeToFile() {
-        const toWriteLogs = this.#logQueue.splice(0, this.#logQueue.length);
-        let logAggregated = '';
-        toWriteLogs.forEach(log => logAggregated += `${JSON.stringify(log)}\n`);
-        this.#writingToFile(logAggregated);
-    }
-
-    #startPollingForLogs() {
-        this.#setIntervalAdd = setInterval(() => {
-            if (this.#logQueue.length > 0) {
-                this.#writeToFile();
-            }
-        }, this.#pollingInterval);
+    #connectStreams() {
+        this.#readableStream.pipe(this.#writableStream);
     }
 
     trace(dataToLog) {
@@ -90,10 +58,9 @@ class ixilogger {
                     logType: 'trace',
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Trace] ${JSON.stringify(logTrace)}`);
-                }
-                this.#logQueue.push(logTrace);
+                const jsonTrace = JSON.stringify(logTrace);
+                console.trace(jsonTrace);
+                this.#readableStream.push(jsonTrace + '\n');
             } else {
                 throw new Error('ixilogger: Trace data need to be logged can only be an object');
             }
@@ -109,10 +76,9 @@ class ixilogger {
                     logType: 'debug',
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Debug] ${JSON.stringify(logDebug)}`);
-                }
-                this.#logQueue.push(logDebug);
+                const jsonDebug = JSON.stringify(logDebug);
+                console.log(`Debug: ${jsonDebug}`);
+                this.#readableStream.push(jsonDebug + '\n');
             } else {
                 throw new Error('ixilogger: Debug data need to be logged can only be an object');
             }
@@ -128,10 +94,9 @@ class ixilogger {
                     logType: 'info',
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Info] ${JSON.stringify(logInfo)}`);
-                }
-                this.#logQueue.push(logInfo);
+                const jsonInfo = JSON.stringify(logInfo);
+                console.log(`Info: ${jsonInfo}`);
+                this.#readableStream.push(jsonInfo + '\n');
             } else {
                 throw new Error('ixilogger: Info data need to be logged can only be an object');
             }
@@ -147,10 +112,9 @@ class ixilogger {
                     logType: 'warn',
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Warn] ${JSON.stringify(logWarn)}`);
-                }
-                this.#logQueue.push(logWarn);
+                const jsonWarn = JSON.stringify(logWarn);
+                console.log(`Warn: ${jsonWarn}`);
+                this.#readableStream.push(jsonWarn + '\n');
             } else {
                 throw new Error('ixilogger: Warn data need to be logged can only be an object');
             }
@@ -166,31 +130,11 @@ class ixilogger {
                     logType: 'error',
                     '@timestamp': new Date().toISOString()
                 }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Error] ${JSON.stringify(logError)}`);
-                }
-                this.#logQueue.push(logError);
+                const jsonError = JSON.stringify(logError);
+                console.log(`Error: ${jsonError}`);
+                this.#readableStream.push(jsonError + '\n');
             } else {
                 throw new Error('ixilogger: Error data need to be logged can only be an object');
-            }
-        }
-    }
-
-    fatal(dataToLog) {
-        if (dataToLog !== null && dataToLog !== undefined) {
-            if (typeof dataToLog === 'object') {
-                const logFatal = Object.assign({}, {
-                    name: this.#appName,
-                    level: 60,
-                    logType: 'fatal',
-                    '@timestamp': new Date().toISOString()
-                }, dataToLog);
-                if (this.#showLogs) {
-                    console.log(`[Fatal] ${JSON.stringify(logFatal)}`);
-                }
-                this.#logQueue.push(logFatal);
-            } else {
-                throw new Error('ixilogger: Fatal data need to be logged can only be an object');
             }
         }
     }

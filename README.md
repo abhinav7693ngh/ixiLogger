@@ -2,8 +2,8 @@
 
 ## Introduction
 
-ixilogger is a simple to use utility that help you setup logging superfast in your Javascript and Node projects with Zero dependency.<br/>
-For log rotation you can use external system like logStash.<br/>
+ixilogger is a simple to use utility that help you setup logging superfast in your Node server with Zero dependency using nodejs streams. <br/>
+For log rotation you can use external system like logStash.
 Don't forget to leave a github star ⭐, if you like ixilogger.
 
 ## Installation
@@ -46,9 +46,7 @@ const { ixilogger } = require("ixilogger");
 
 const logger = new ixilogger({
   appName: "app", // Name of the application (Optional)
-  filePath: path.resolve("/var/log/app/", "app.log"), // Log path (Optional),
-  showLogs: false, // set to true if you want to console logs (Optional)
-  pollingInterval: 100, // As logs are polled and written to file in batches, Using this you can set the polling interval in ms (Optional)
+  filePath: path.resolve("/var/log/app/", "app.log"), // Log path
 });
 ```
 
@@ -56,7 +54,7 @@ const logger = new ixilogger({
 
 > config object is not mandatory and also the fields are also purely optional. So if you don't want to give any config then it uses the default "name" and "filepath".
 
-> **Default parameter values** <br/> **name** - ixilogger <br/> **filePath** - /var/log/ixilogger.log <br/> **showLogs** - false <br/> **pollingInterval** - 100ms
+> **Default parameter values** <br/> **name** - ixilogger <br/> **filePath** - /var/log/ixilogger.log <br/>
 
 ### Methods Available on ixilogger instance
 
@@ -85,16 +83,10 @@ const logger = new ixilogger({
   });
   ```
 - **Warn log**
+
   ```javascript
   logger.warn({
     data: "warn log",
-  });
-  ```
-- **Fatal log**
-
-  ```javascript
-  logger.fatal({
-    data: "fatal log",
   });
   ```
 
@@ -110,7 +102,6 @@ const logger = new ixilogger({
       - info
       - warn
       - error
-      - fatal
 
   > 3. **level** which can have below values as per logType<br/>
 
@@ -119,6 +110,5 @@ const logger = new ixilogger({
       - 30 (info)
       - 40 (warn)
       - 50 (error)
-      - 60 (fatal)
 
   > 4. **@timestamp** which store the log time

@@ -7,7 +7,15 @@
     "type": "git",
     "url": "git+https://github.com/abhinav7693ngh/ixiLogger"
   },
-  "keywords": ["Javascript","JS", "logging", "logger", "log", "Typescript", "TS"],
+  "keywords": [
+    "Javascript",
+    "JS",
+    "logging",
+    "logger",
+    "log",
+    "Typescript",
+    "TS"
+  ],
   "author": "Abhinav Singh",
   "license": "MIT"
 }
